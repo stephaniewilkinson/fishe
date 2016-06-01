@@ -11,28 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531055627) do
+ActiveRecord::Schema.define(version: 20160601194243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "experiments", force: :cascade do |t|
     t.string   "name"
-    t.string   "summary"
+    t.text     "summary"
     t.integer  "budget"
+    t.integer  "scientist_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.integer  "scientist_id"
   end
 
   add_index "experiments", ["scientist_id"], name: "index_experiments_on_scientist_id", using: :btree
 
   create_table "logs", force: :cascade do |t|
     t.string   "subject_name"
+    t.text     "comment"
     t.boolean  "deceased"
     t.integer  "weight"
     t.integer  "treatments"
-    t.string   "comment"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "experiment_id"
@@ -43,9 +43,9 @@ ActiveRecord::Schema.define(version: 20160531055627) do
   create_table "scientists", force: :cascade do |t|
     t.string   "name"
     t.string   "discipline"
-    t.boolean  "spooky",     default: true
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.boolean  "spooky"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_foreign_key "experiments", "scientists"
