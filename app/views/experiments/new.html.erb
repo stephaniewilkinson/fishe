@@ -1,4 +1,9 @@
 <div class="container experiments">
   <h1>Add New Experiment for Dr. <%= @scientist.name %></h1>
+  <div class="add-background">
+    <br>
+    <%= form_for @experiment, url: scientist_experiments_path(@scientist), method: :post do |f| %>
 
+    <% end %>
+  </div>
 </div>
