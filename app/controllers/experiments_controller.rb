@@ -35,10 +35,10 @@ class ExperimentsController < ApplicationController
   private
     def experiment_params
       params.require(:experiment).permit(
-        :name
+        :name,
         :summary,
         :budget,
-        log_details: [
+        log_attributes: [
           :subject_name,
           :weight,
           :treatments,
@@ -47,6 +47,4 @@ class ExperimentsController < ApplicationController
         ]
       )
     end
-
-
 end

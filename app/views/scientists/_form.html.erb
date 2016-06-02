@@ -1,4 +1,8 @@
 <div class="add-background">
+
+<% @scientist.errors.full_messages.each do |message| %>
+  <p class='text-danger'> <%= message %></p>
+<% end %>
   <%= form_for @scientist do |f| %>
     <div class="row">
       <div class="field col-md-3">

@@ -3,7 +3,48 @@
   <div class="add-background">
     <br>
     <%= form_for @experiment, url: scientist_experiments_path(@scientist), method: :post do |f| %>
-
+      <div class="row">
+        <div class="field col-md-3">
+          <%= f.label "Name of Experiment: " %> <br>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field col-md-3">
+          <%= f.label "Budget: " %> <br>
+          <%= f.number :budget %>
+        </div>
+        <div class="field col-md-6">
+          <%= f.label "Summary: " %> <br>
+          <%= f.text_area :summary %>
+        </div>
+      </div>
+      <br>
+      <%= f.fields_for :logs do | log_form | %>
+        <div class="row">
+          <div class="col-md-offset-1">
+            <h3 class="col-md-3">First Log: </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-offset-1">
+            <div class="field col-md-3">
+              <%= log_form.label "Subject Name: " %>
+              <%= log_form.text_field :subject_name %>
+            </div>
+            <div class="field col-md-3">
+              <%= log_form.label "Weight: " %>
+              <%= log_form.text_field :weight %>
+            </div>
+            <div class="field col-md-3">
+              <%= log_form.label "Treatments: " %>
+              <%= log_form.text_field :treatments %>
+            </div>
+            <div class="field col-md-2">
+              <%= log_form.label "Deceased? " %>
+              <%= log_form.checkbox :deceased %>
+            </div>
+          </div>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>
