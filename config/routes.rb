@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root 'static_pages#index'
 
-  resources :scientists
+  resources :scientists do
+    resources :experiments, except: :index do
+      resource :logs, only: [:show, :new, :create]
+    end
+  end
 
 
   get 'experiments', to: 'experiments#index'
